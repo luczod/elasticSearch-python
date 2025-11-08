@@ -3,7 +3,7 @@ from config import INDEX_NAME_DEFAULT, INDEX_NAME_EMBEDDING, INDEX_NAME_N_GRAM
 from elastic_transport import ObjectApiResponse
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import JSONResponse
 from sentence_transformers import SentenceTransformer
 from utils import get_es_client
 

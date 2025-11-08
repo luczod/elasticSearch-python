@@ -51,7 +51,7 @@ def _insert_documents(
 
 
 if __name__ == "__main__":
-    with open("../../../data/apod_raw.json") as f:
+    with open("../../data/apod_raw.json") as f:
         documents = json.load(f)
 
     index_data(documents=documents)

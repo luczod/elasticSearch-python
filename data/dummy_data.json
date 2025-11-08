@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Metropolis (1927)",
+    "text": "A silent German expressionist film masterpiece, set in a futuristic urban dystopia divided between the working class and the city planners. It is a landmark of early science fiction cinema.",
+    "created_on": "1927-01-10"
+  },
+  {
+    "title": "2001: A Space Odyssey (1968)",
+    "text": "Directed by Stanley Kubrick, this film is a seminal work in the sci-fi genre, known for its scientifically accurate depiction of space travel, groundbreaking visual effects, and ambiguous narrative exploring human evolution and artificial intelligence.",
+    "created_on": "1968-04-02"
+  },
+  {
+    "title": "Blade Runner (1982)",
+    "text": "A neo-noir science fiction film directed by Ridley Scott, based on Philip K. Dick's novel 'Do Androids Dream of Electric Sheep?'. It explores themes of identity, humanity, and ethics in a dystopian future Los Angeles.",
+    "created_on": "1982-06-25"
+  }
+]

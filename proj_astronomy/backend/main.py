@@ -151,6 +151,50 @@ async def semantic_search(
         return handle_error(e)
 
 
+@app.get("/api/v1/get_docs_per_year_count/")
+async def get_docs_per_year_count(
+    search_query: str, tokenizer: str = "Standard"
+) -> JSONResponse:
+    try:
+        es = get_es_client(max_retries=1, sleep_time=0)
+        query = {
+            "bool": {
+                "must": [
+                    {
+                        "multi_match": {
+                            "query": search_query,
+                            "fields": ["title", "explanation"],
+                        }
+                    }
+                ]
+            }
+        }
+
+        index_name = (
+            INDEX_NAME_DEFAULT if tokenizer == "Standard" else INDEX_NAME_N_GRAM
+        )
+        response = es.search(
+            index=index_name,
+            body={
+                "query": query,
+                "aggs": {
+                    "docs_per_year": {
+                        "date_histogram": {
+                            "field": "date",
+                            "calendar_interval": "year",  # Group by year
+                            "format": "yyyy",  # Format the year in the response
+                        }
+                    }
+                },
+            },
+            filter_path=["aggregations.docs_per_year"],
+        )
+
+        return {"docs_per_year": extract_docs_per_year(response)}
+    except Exception as e:
+        return handle_error(e)
+
+
 def get_total_hits(response: ObjectApiResponse) -> int:
     return response["hits"]["total"]["value"]
 
